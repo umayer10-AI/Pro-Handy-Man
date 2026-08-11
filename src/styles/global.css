@@ -121,6 +121,10 @@ svg {
   transform: translateY(0);
 }
 
+article.reveal {
+  transition: opacity 560ms ease, transform 560ms ease;
+}
+
 .reveal-scale {
   opacity: 0;
   transform: translateY(16px) scale(0.98);
