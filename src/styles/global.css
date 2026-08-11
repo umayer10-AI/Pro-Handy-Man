@@ -110,6 +110,35 @@ svg {
   animation: wa-ring 1.8s ease-out infinite;
 }
 
+@keyframes hero-image-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.hero-image-wrap {
+  animation: hero-image-enter 720ms ease both;
+}
+
+.hero-float {
+  animation: hero-float 6.5s ease-in-out 850ms infinite;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -161,5 +190,10 @@ article.reveal {
   .reveal-scale {
     opacity: 1;
     transform: none;
+  }
+
+  .hero-image-wrap,
+  .hero-float {
+    animation: none;
   }
 }
