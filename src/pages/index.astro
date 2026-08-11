@@ -36,7 +36,7 @@ const points = [
   includeVoice={true}
 >
   <section id="top" class="relative min-h-[100dvh] flex items-center pt-16 overflow-hidden bg-background">
-    <div class="absolute inset-0 -z-10 bg-[linear-gradient(135deg,hsl(var(--secondary)/0.9),transparent_42%),linear-gradient(180deg,hsl(var(--background)),hsl(var(--background)/0.74))]"></div>
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_78%_18%,hsl(var(--primary)/0.14),transparent_22rem),linear-gradient(135deg,hsl(var(--secondary)/0.9),transparent_42%),linear-gradient(180deg,hsl(var(--background)),hsl(var(--background)/0.74))]"></div>
     <div class="mx-auto max-w-[72rem] px-5 py-20 lg:py-24 w-full">
       <div class="grid items-center gap-12 lg:grid-cols-[minmax(0,1.02fr)_minmax(340px,0.98fr)]">
         <div class="max-w-2xl reveal-scale is-visible">
@@ -73,6 +73,14 @@ const points = [
             loading="eager"
             decoding="async"
           />
+          <div class="hidden sm:flex absolute -left-5 top-8 items-center gap-3 rounded-2xl border border-border/80 bg-card/92 px-4 py-3 text-sm shadow-xl backdrop-blur">
+            <span class="grid h-9 w-9 place-items-center rounded-xl bg-secondary text-primary"><Star class="h-4 w-4 fill-current" /></span>
+            <span><strong class="block font-display text-foreground">4.9 rating</strong><span class="text-xs text-muted-foreground">1,200+ jobs done</span></span>
+          </div>
+          <div class="hidden md:flex absolute -right-4 bottom-10 items-center gap-3 rounded-2xl border border-border/80 bg-card/92 px-4 py-3 text-sm shadow-xl backdrop-blur">
+            <span class="grid h-9 w-9 place-items-center rounded-xl bg-secondary text-primary"><ShieldCheck class="h-4 w-4" /></span>
+            <span><strong class="block font-display text-foreground">Licensed team</strong><span class="text-xs text-muted-foreground">Islandwide Singapore</span></span>
+          </div>
         </div>
       </div>
     </div>
