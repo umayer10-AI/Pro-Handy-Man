@@ -1,0 +1,223 @@
+---
+import { MapPin, Clock, ShieldCheck, Star, ArrowRight, CheckCircle2, Phone, Mail, MessageSquare } from '@lucide/astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SEOSections from '@/components/SEOSections.astro';
+import { SERVICES } from '@/data/services.js';
+import { ALL_TESTIMONIALS, reviewsSchema } from '@/data/seoSections.js';
+
+const TICKER = ['HDB & Condo', 'Same-Day Slots', 'Licensed Handymen', 'Upfront Quotes', 'Islandwide SG', 'No Hidden Fees'];
+const HOME_FAQS = [
+  { q: 'What handyman services do you offer in Singapore?', a: 'We offer a full range of home repair and maintenance services including general repairs, plumbing, electrical work, interior painting, furniture assembly, and small renovation works. All jobs are handled by licensed, insured tradespeople across Singapore.' },
+  { q: 'Do you serve HDB flats as well as condos?', a: 'Yes, we service both HDB flats and private condominiums islandwide — from Woodlands and Jurong in the west to Tampines and Pasir Ris in the east, and everything in between.' },
+  { q: 'How quickly can I get a handyman?', a: 'We offer same-day and next-day slots for most services, subject to availability. Weekend and evening appointments are also available. Simply request a quote and we will match you with an available handyman.' },
+  { q: 'How much does a handyman cost in Singapore?', a: 'Our rates are competitive and transparent. We provide an upfront, no-obligation quote before any work begins so you always know the full cost. There are no hidden fees or surprise call-out charges.' },
+  { q: 'Are your handymen licensed and insured?', a: 'Yes. Every tradesperson on our team is background-checked, licensed where required (including our plumbers and electricians), and covered by insurance for your peace of mind.' },
+  { q: 'Which areas in Singapore do you cover?', a: 'We cover all 26 planning areas across Singapore — HDB towns, condominiums and landed properties islandwide. Contact us to confirm availability in your area.' },
+];
+const schemaFAQs = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: HOME_FAQS.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+const points = [
+  { icon: ShieldCheck, t: 'Vetted & licensed professionals', d: 'Every handyman is background-checked, skilled, and insured. Our plumbers and electricians hold the relevant Singapore trade licences.' },
+  { icon: CheckCircle2, t: 'Upfront, transparent pricing', d: 'You receive a clear quote before we start. No hidden charges, no surprise call-out fees — just honest pricing for quality Singapore home repairs.' },
+  { icon: Clock, t: 'Fast & flexible scheduling', d: 'Same-day and weekend slots available, booked around your schedule. We cover all HDB towns and condo developments islandwide.' },
+  { icon: Star, t: 'Quality guaranteed', d: 'Rated 4.9 stars across more than 1,200 completed jobs. We stand behind every repair and renovation we carry out.' },
+];
+---
+
+<BaseLayout
+  title="Pro Handyman SG.Com — Trusted Handyman Services Singapore | HDB & Condo Repairs"
+  description="Singapore's trusted handyman service for HDB flats and condos. Licensed handymen for plumbing, electrical, painting, furniture assembly, and renovation. Same-day slots. Free upfront quotes. Islandwide."
+  keywords="handyman Singapore, handyman services Singapore, HDB handyman, condo repair Singapore, home repair Singapore, plumber Singapore, electrician Singapore, furniture assembly Singapore, painting Singapore, renovation Singapore, same day handyman Singapore"
+  canonical="https://prohandymansg.com/"
+  schemas={[schemaFAQs, reviewsSchema(ALL_TESTIMONIALS)]}
+  includeVoice={true}
+>
+  <section id="top" class="relative min-h-[100dvh] flex items-center pt-16 overflow-hidden bg-background">
+    <div class="mx-auto max-w-[72rem] px-5 py-20 w-full">
+      <div class="max-w-2xl reveal-scale is-visible">
+        <span class="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-xs font-semibold text-primary">
+          <MapPin class="w-3.5 h-3.5" /> Trusted handyman services across Singapore
+        </span>
+        <h1 class="font-display font-extrabold tracking-tight text-4xl sm:text-5xl md:text-6xl leading-[1.05] mt-5">
+          Handyman services in Singapore — <span class="underline-stroke">done right</span> the first time.
+        </h1>
+        <p class="mt-5 text-lg text-muted-foreground max-w-xl">
+          Pro Handyman SG.Com connects Singapore homeowners with skilled, licensed handymen for HDB flats and condos islandwide. From a leaking tap to a full room repaint — upfront quotes, no surprises, same-day slots available.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#contact" class="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-6 py-3.5 font-semibold hover:brightness-110 active:scale-[0.98] transition">
+            Request a Free Quote <ArrowRight class="w-4 h-4" />
+          </a>
+          <a href="#services" class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 font-semibold hover:bg-secondary transition">
+            Browse Services
+          </a>
+        </div>
+        <div class="mt-10 flex flex-wrap gap-6 text-sm">
+          <div class="flex items-center gap-2 text-muted-foreground"><Clock class="w-4 h-4 text-accent" /> Same-day slots available</div>
+          <div class="flex items-center gap-2 text-muted-foreground"><ShieldCheck class="w-4 h-4 text-accent" /> Licensed & insured team</div>
+          <div class="flex items-center gap-2 text-muted-foreground"><Star class="w-4 h-4 text-accent" /> 4.9 rating · 1,200+ jobs done</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-primary text-primary-foreground py-3 overflow-hidden">
+    <div class="flex whitespace-nowrap animate-marquee w-max">
+      {[...TICKER, ...TICKER].map((t) => (
+        <span class="flex items-center gap-3 px-6 font-display font-semibold text-sm uppercase tracking-wide">
+          {t} <span class="text-accent">◆</span>
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <section id="services" class="py-24">
+    <div class="mx-auto max-w-[72rem] px-5">
+      <div class="max-w-xl reveal">
+        <span class="text-sm font-semibold text-accent uppercase tracking-wider">Our Handyman Services</span>
+        <h2 class="font-display font-extrabold text-3xl md:text-4xl mt-2">Everything your Singapore home needs, one call away</h2>
+        <p class="text-muted-foreground mt-3">From leaking taps and electrical faults to full room repaints and furniture assembly — our vetted handymen bring the tools, the expertise, and a tidy finish every time.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        {SERVICES.map((s, i) => {
+          const Icon = s.icon;
+          return (
+            <article class="group reveal rounded-2xl bg-card border border-border overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300" style={`transition-delay:${i * 45}ms`}>
+              <div class="h-44 overflow-hidden">
+                <img src={s.img} alt={`${s.name} service in Singapore — Pro Handyman SG.Com`} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              </div>
+              <div class="p-6">
+                <div class="flex items-center gap-3">
+                  <span class="grid place-items-center w-10 h-10 rounded-lg bg-secondary text-primary"><Icon class="w-5 h-5" /></span>
+                  <h3 class="font-display font-bold text-lg">{s.name}</h3>
+                </div>
+                <p class="text-sm text-muted-foreground mt-3">{s.desc}</p>
+                <a href={`/services/${s.slug}`} class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary mt-4 group-hover:gap-2.5 transition-all">
+                  Learn more <ArrowRight class="w-4 h-4" />
+                </a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+      <p class="text-center text-sm text-muted-foreground mt-10">
+        Can't find what you need? <a href="#contact" class="font-semibold text-primary hover:underline">Contact us</a> — we handle most home repair and maintenance jobs across Singapore.
+      </p>
+    </div>
+  </section>
+
+  <section id="why" class="py-24 bg-secondary/50">
+    <div class="mx-auto max-w-[72rem] px-5 grid lg:grid-cols-2 gap-14 items-center">
+      <div>
+        <span class="text-sm font-semibold text-accent uppercase tracking-wider">Why Pro Handyman SG</span>
+        <h2 class="font-display font-extrabold text-3xl md:text-4xl mt-2">Singapore's reliable choice for home repairs and maintenance</h2>
+        <p class="text-muted-foreground mt-3">Whether it's a quick tap fix in your Tampines HDB or a full repaint in your Orchard condo, we deliver consistent quality and professionalism across every job.</p>
+        <div class="grid sm:grid-cols-2 gap-6 mt-10">
+          {points.map((p) => {
+            const Icon = p.icon;
+            return (
+              <div class="flex gap-4">
+                <span class="shrink-0 grid place-items-center w-11 h-11 rounded-xl bg-primary text-primary-foreground"><Icon class="w-5 h-5" /></span>
+                <div><h3 class="font-display font-bold">{p.t}</h3><p class="text-sm text-muted-foreground mt-1">{p.d}</p></div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div class="relative reveal-scale">
+        <img src="https://images.hostinger.com/1e41c22d-fd6b-49af-bcfb-64b9be3b9913.png" alt="Beautifully renovated Singapore HDB interior by Pro Handyman SG.Com" class="rounded-3xl shadow-2xl w-full object-cover aspect-[4/3]" loading="lazy" />
+        <div class="absolute -bottom-6 -left-4 sm:left-6 bg-card border border-border rounded-2xl shadow-xl px-6 py-4 flex items-center gap-4">
+          <span class="font-display font-extrabold text-3xl text-primary">4.9</span>
+          <div class="text-xs">
+            <div class="flex text-accent">{Array.from({ length: 5 }).map(() => <Star class="w-3.5 h-3.5 fill-current" />)}</div>
+            <p class="text-muted-foreground mt-1">1,200+ happy Singapore homes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SEOSections />
+
+  <section id="faq" class="py-24">
+    <div class="mx-auto max-w-[56rem] px-5">
+      <div class="text-center mb-12 reveal">
+        <span class="text-sm font-semibold text-accent uppercase tracking-wider">FAQ</span>
+        <h2 class="font-display font-extrabold text-3xl md:text-4xl mt-2">Frequently asked questions about handyman services in Singapore</h2>
+        <p class="text-muted-foreground mt-3">Everything you need to know before booking a handyman.</p>
+      </div>
+      <div class="divide-y divide-border rounded-2xl border border-border bg-card reveal-scale">
+        {HOME_FAQS.map((f, i) => (
+          <div data-faq-item data-open={i === 0 ? 'true' : 'false'} class="p-6">
+            <button type="button" aria-expanded={i === 0 ? 'true' : 'false'} class="w-full flex items-start justify-between gap-4 text-left">
+              <h3 class="font-semibold">{f.q}</h3>
+              <span data-faq-icon class="text-muted-foreground text-lg shrink-0">{i === 0 ? '−' : '+'}</span>
+            </button>
+            <p data-faq-panel hidden={i !== 0} class="mt-3 text-sm text-muted-foreground leading-relaxed">{f.a}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-sm text-muted-foreground mt-8">Have more questions? <a href="#contact" class="font-semibold text-primary hover:underline">Get in touch</a> or read our <a href="/blog" class="font-semibold text-primary hover:underline">home care blog</a> for tips and guides.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 bg-secondary/30">
+    <div class="mx-auto max-w-[72rem] px-5 grid lg:grid-cols-2 gap-12">
+      <div>
+        <span class="text-sm font-semibold text-accent uppercase tracking-wider">Get a Free Quote</span>
+        <h2 class="font-display font-extrabold text-3xl md:text-4xl mt-2">Request your handyman quote in Singapore</h2>
+        <p class="text-muted-foreground mt-3">Fill in the form and we'll get back to you with a no-obligation quote, usually within a few hours. We cover all HDB towns and condos islandwide.</p>
+        <div class="mt-8 space-y-4">
+          <div class="flex items-center gap-4"><span class="grid place-items-center w-11 h-11 rounded-xl bg-secondary text-primary"><Phone class="w-5 h-5" /></span><div><p class="text-sm text-muted-foreground">Call or WhatsApp</p><p class="font-semibold">+65 8597 9456</p></div></div>
+          <div class="flex items-center gap-4"><span class="grid place-items-center w-11 h-11 rounded-xl bg-secondary text-primary"><Mail class="w-5 h-5" /></span><div><p class="text-sm text-muted-foreground">Email us</p><p class="font-semibold">support@prohandymansg.com</p></div></div>
+          <div class="flex items-center gap-4"><span class="grid place-items-center w-11 h-11 rounded-xl bg-secondary text-primary"><MapPin class="w-5 h-5" /></span><div><p class="text-sm text-muted-foreground">Service area</p><p class="font-semibold">Islandwide, Singapore</p></div></div>
+        </div>
+        <div class="mt-8 rounded-xl bg-card border border-border p-5">
+          <div class="flex items-start gap-3">
+            <MessageSquare class="w-5 h-5 text-accent mt-0.5 shrink-0" />
+            <p class="text-sm text-muted-foreground"><strong class="text-foreground">Serving all of Singapore</strong> — HDB flats in Tampines, Woodlands, Jurong, Sengkang, Punggol, Yishun and more. Condos in Orchard, Buona Vista, Novena, Bedok, and all districts.</p>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-3xl bg-card border border-border shadow-lg p-6 sm:p-8">
+        <div data-quote-done class="hidden h-full min-h-[380px] flex-col items-center justify-center text-center">
+          <CheckCircle2 class="w-14 h-14 text-accent" />
+          <h3 class="font-display font-bold text-xl mt-4">Request received!</h3>
+          <p class="text-muted-foreground mt-2 max-w-xs">Thanks for reaching out. Our team will contact you shortly with your quote.</p>
+          <button data-quote-reset class="mt-6 rounded-full border border-border px-5 py-2.5 text-sm font-semibold hover:bg-secondary transition">Send another</button>
+        </div>
+        <form data-quote-form class="space-y-4">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-medium">Name</label>
+              <input required name="name" class="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition" placeholder="Your name" />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-medium">Phone</label>
+              <input required name="phone" class="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition" placeholder="+65" />
+            </div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="text-sm font-medium">Email</label>
+            <input required type="email" name="email" class="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition" placeholder="you@email.com" />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="text-sm font-medium">Service needed</label>
+            <select name="service" class="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition">
+              {SERVICES.map((s) => <option>{s.name}</option>)}
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label class="text-sm font-medium">Describe the job</label>
+            <textarea required rows="4" name="message" class="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition" placeholder="e.g. Kitchen tap is leaking and needs replacing..."></textarea>
+          </div>
+          <button type="submit" class="w-full rounded-full bg-accent text-accent-foreground px-6 py-3.5 font-semibold hover:brightness-95 active:scale-[0.98] transition disabled:opacity-60">Request Free Quote</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+const { variant = 'solid', class: className = '', showText = true } = Astro.props;
+const isLight = variant === 'light';
+const badgeBg = isLight ? 'var(--accent)' : 'var(--primary)';
+const badgeFg = '#ffffff';
+const ringColor = isLight ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.18)';
+const textColor = isLight ? 'var(--accent)' : 'var(--primary)';
+const subColor = isLight ? 'rgba(255,255,255,0.72)' : 'hsl(var(--muted-foreground))';
+---
+
+<span class={`inline-flex items-center gap-2.5 ${className}`}>
+  <span
+    class="grid place-items-center rounded-xl shrink-0"
+    style={`width:38px;height:38px;background:${badgeBg};box-shadow:inset 0 0 0 1.5px ${ringColor};`}
+  >
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M16 4.2 5 12.4V27a1 1 0 0 0 1 1h7v-6.5h6V28h7a1 1 0 0 0 1-1V12.4L16 4.2Z" fill={badgeFg} fill-opacity="0.22"></path>
+      <path d="M19.6 7.9a3.4 3.4 0 0 0-4.5 4.5l-7.2 7.2 2.3 2.3 7.2-7.2a3.4 3.4 0 0 0 4.5-4.5l-2 2-2.3-.3-.3-2.3 2-2Z" fill={badgeFg}></path>
+      <circle cx="23.4" cy="23.4" r="2.1" fill={badgeFg} fill-opacity="0.85"></circle>
+    </svg>
+  </span>
+  {showText && (
+    <span class="flex flex-col leading-none">
+      <span class="font-display font-bold text-[1.05rem] tracking-tight" style={`color:${textColor};`}>
+        Pro Handyman SG<span style={`color:${isLight ? '#fff' : 'hsl(var(--accent))'};`}>.Com</span>
+      </span>
+      <span class="text-[0.62rem] font-semibold uppercase tracking-[0.18em] mt-1" style={`color:${subColor};`}>
+        Singapore · Handyman Pros
+      </span>
+    </span>
+  )}
+</span>

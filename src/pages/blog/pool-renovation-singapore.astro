@@ -1,0 +1,58 @@
+---
+import { ArrowLeft, Calendar, CheckCircle2 } from '@lucide/astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+const IMG = 'https://horizons-cdn.hostinger.com/d8d8a46e-62f9-45a3-ada1-9e371d25612a/fff3df1e380a560ee8682a02a62f9037.jpg';
+const signs = ['Cracked, chipped or missing pool tiles and mosaic', 'Persistent cloudy or green water despite proper chemical dosing', 'Water level dropping faster than evaporation can explain (a possible pool leak)', 'Rough, faded or algae-stained plaster and pool deck surfaces', 'Rusting handrails, ladders or corroded pool lighting fixtures', 'Outdated pool pump, filtration or heating systems running inefficiently'];
+const maintenance = ['Weekly checks on chlorine and pH levels', 'Monthly filter cleaning or backwashing', 'Quarterly inspection of tiles, grout lines and deck joints for early cracking', 'Annual professional servicing of pumps, heaters and lighting'];
+const schema = { '@context': 'https://schema.org', '@type': 'Article', headline: 'Pool Renovation Singapore: The Complete Guide to Restoring Your Condo Swimming Pool', image: IMG, datePublished: '2026-07-27', author: { '@type': 'Organization', name: 'Pro Handyman SG.Com' }, publisher: { '@type': 'Organization', name: 'Pro Handyman SG.Com', url: 'https://prohandymansg.com' }, mainEntityOfPage: 'https://prohandymansg.com/blog/pool-renovation-singapore' };
+---
+
+<BaseLayout
+  title="Pool Renovation Singapore: Complete Guide to Swimming Pool Repair & Maintenance | Pro Handyman SG.Com"
+  description="Thinking about pool renovation in Singapore? Learn the signs your condo or landed pool needs repair, what a renovation involves, costs, and swimming pool maintenance tips from Singapore's trusted handyman team."
+  keywords="pool renovation, swimming pool maintenance, pool repair Singapore, pool tile replacement, pool resurfacing, condo pool renovation, pool deck repair, pool leak repair Singapore, swimming pool contractor Singapore"
+  canonical="https://prohandymansg.com/blog/pool-renovation-singapore"
+  schemas={[schema]}
+>
+  <article class="pt-28 pb-24">
+    <div class="mx-auto max-w-[56rem] px-5">
+      <a href="/blog" class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all"><ArrowLeft class="w-4 h-4" /> Back to blog</a>
+      <div class="flex items-center gap-3 text-xs text-muted-foreground mt-6">
+        <span class="rounded-full bg-secondary text-primary px-2.5 py-1 font-semibold">Pool Renovation</span>
+        <span class="flex items-center gap-1"><Calendar class="w-3.5 h-3.5" /> 27 Jul 2026</span>
+      </div>
+      <h1 class="font-display font-extrabold text-3xl md:text-5xl mt-4 leading-tight">Pool Renovation Singapore: The Complete Guide to Restoring Your Condo Swimming Pool</h1>
+      <p class="text-muted-foreground mt-4 text-lg max-w-2xl">From faded tiles to cracked decking, here is everything Singapore homeowners and MCSTs need to know about swimming pool maintenance, pool repair, and full pool renovation.</p>
+      <div class="mt-8 rounded-2xl overflow-hidden border border-border reveal-scale is-visible">
+        <img src={IMG} alt="Renovated condo swimming pool in Singapore with clean blue water, red tiled deck and tropical palm trees" class="w-full h-[320px] md:h-[440px] object-cover" />
+      </div>
+      <div class="max-w-none mt-10 text-foreground/90 leading-relaxed space-y-6">
+        <p>A well-maintained swimming pool is one of the biggest lifestyle draws of condo living in Singapore — but our tropical climate, chlorinated water and constant foot traffic take a toll fast. If your pool deck is cracked, the tiles are stained, or the water never seems to stay crystal clear, it may be time to look beyond routine cleaning and consider a proper <strong>pool renovation</strong>.</p>
+        <h2 class="font-display font-bold text-2xl md:text-3xl mt-10">Signs Your Pool Needs Renovation, Not Just Maintenance</h2>
+        <p>Regular <strong>swimming pool maintenance</strong> — vacuuming, chemical balancing, filter cleaning — keeps a healthy pool running smoothly. But some issues signal a deeper problem that maintenance alone cannot fix:</p>
+        <ul class="space-y-2">{signs.map((item) => <li class="flex items-start gap-2.5"><CheckCircle2 class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" /><span>{item}</span></li>)}</ul>
+        <h2 class="font-display font-bold text-2xl md:text-3xl mt-10">What Does a Professional Pool Renovation Involve?</h2>
+        <p>A comprehensive <strong>pool repair Singapore</strong> homeowners can rely on typically covers several stages, depending on the age and condition of the pool:</p>
+        <ol class="list-decimal list-inside space-y-2">
+          <li><strong>Inspection and leak detection</strong> — pinpointing cracks in the shell, faulty pipework or worn expansion joints.</li>
+          <li><strong>Tile and surface replacement</strong> — removing damaged tiles, re-screeding, and installing new non-slip pool tiles or plaster finishes.</li>
+          <li><strong>Pool deck repair</strong> — resurfacing or re-laying cracked deck tiles around the pool edge to prevent water seepage and tripping hazards.</li>
+          <li><strong>Equipment upgrades</strong> — replacing ageing pumps, filters, and lighting with more energy-efficient models.</li>
+          <li><strong>Water treatment reset</strong> — draining, deep cleaning, and rebalancing water chemistry before refilling.</li>
+        </ol>
+        <h2 class="font-display font-bold text-2xl md:text-3xl mt-10">Why Regular Swimming Pool Maintenance Still Matters</h2>
+        <p>Even after a full renovation, ongoing maintenance is what protects your investment. In Singapore's heat and humidity, algae and mineral build-up can return quickly without consistent care. We recommend:</p>
+        <ul class="space-y-2">{maintenance.map((item) => <li class="flex items-start gap-2.5"><CheckCircle2 class="w-5 h-5 text-accent mt-0.5 flex-shrink-0" /><span>{item}</span></li>)}</ul>
+        <h2 class="font-display font-bold text-2xl md:text-3xl mt-10">How Much Does Pool Renovation Cost in Singapore?</h2>
+        <p>Costs vary widely depending on pool size, the extent of tile and structural damage, and whether equipment needs replacing. Minor pool repairs — such as re-tiling a section or fixing a small leak — are far more affordable than a full shell renovation. A proper site inspection is the only reliable way to get an accurate quote, which is why we offer a free, no-obligation assessment before any work begins.</p>
+        <h2 class="font-display font-bold text-2xl md:text-3xl mt-10">Trust Pro Handyman SG.Com for Your Pool Renovation</h2>
+        <p>Whether you manage a condo facility, run an MCST, or own a landed property with a private pool, our team handles everything from small pool repairs to complete renovations across Singapore. We combine skilled tiling, plumbing and general contracting expertise to deliver a pool that is safe, beautiful and built to last.</p>
+      </div>
+      <div class="mt-12 rounded-2xl bg-secondary/60 border border-border p-8 text-center reveal-scale">
+        <h3 class="font-display font-bold text-xl md:text-2xl">Ready to renovate your swimming pool?</h3>
+        <p class="text-muted-foreground mt-2 max-w-lg mx-auto">Get a free quote for pool renovation, repair or maintenance from our Singapore team today.</p>
+        <a href="/#contact" class="inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold px-6 py-3 mt-5 hover:opacity-90 active:scale-[0.98] transition">Request a Free Quote</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

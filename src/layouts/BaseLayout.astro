@@ -1,0 +1,41 @@
+---
+import '../styles/global.css';
+import SiteNav from '@/components/SiteNav.astro';
+import SiteFooter from '@/components/SiteFooter.astro';
+import FloatingButtons from '@/components/FloatingButtons.astro';
+
+const {
+  title,
+  description,
+  keywords,
+  canonical,
+  schemas = [],
+  includeVoice = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    {keywords && <meta name="keywords" content={keywords} />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    {schemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+  </head>
+  <body class="bg-background text-foreground">
+    <SiteNav />
+    <main>
+      <slot />
+    </main>
+    <SiteFooter />
+    <FloatingButtons includeVoice={includeVoice} />
+    <script>
+      import '../scripts/site.js';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+---
+import { ArrowRight, Calendar } from '@lucide/astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { POSTS } from '@/data/posts.js';
+---
+
+<BaseLayout
+  title="Handyman Tips, Home Repair Guides &amp; Maintenance Advice | Pro Handyman SG.Com Blog"
+  description="Expert handyman tips, home repair guides, and maintenance advice for HDB flats and condos across Singapore. Covering plumbing, electrical, painting, renovation, and more."
+  keywords="handyman blog Singapore, home repair tips Singapore, HDB maintenance guide, plumbing tips Singapore, painting advice, furniture assembly tips, renovation ideas Singapore, home care Singapore"
+  canonical="https://prohandymansg.com/blog"
+>
+  <section class="pt-28 pb-12">
+    <div class="mx-auto max-w-[72rem] px-5 reveal-scale is-visible">
+      <span class="text-sm font-semibold text-accent uppercase tracking-wider">Blog</span>
+      <h1 class="font-display font-extrabold text-4xl md:text-5xl mt-2">Home care tips & handyman guides</h1>
+      <p class="text-muted-foreground mt-3 max-w-2xl">Practical advice on repairs, maintenance and improvements to help you keep your Singapore home in top shape.</p>
+    </div>
+  </section>
+  <section class="pb-20">
+    <div class="mx-auto max-w-[72rem] px-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {POSTS.map((p, i) => (
+        <article class="group reveal rounded-2xl bg-card border border-border overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col" style={`transition-delay:${i * 55}ms`}>
+          <div class="h-44 overflow-hidden">
+            <img src={p.img} alt={p.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-center gap-3 text-xs text-muted-foreground">
+              <span class="rounded-full bg-secondary text-primary px-2.5 py-1 font-semibold">{p.tag}</span>
+              <span class="flex items-center gap-1"><Calendar class="w-3.5 h-3.5" /> {p.date}</span>
+            </div>
+            <h2 class="font-display font-bold text-lg mt-3 leading-snug">{p.title}</h2>
+            <p class="text-sm text-muted-foreground mt-2 flex-1">{p.excerpt}</p>
+            <a href={p.link || '/#contact'} class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary mt-4 group-hover:gap-2.5 transition-all">
+              Read more <ArrowRight class="w-4 h-4" />
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
