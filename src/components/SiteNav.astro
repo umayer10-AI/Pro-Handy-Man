@@ -1,5 +1,5 @@
 ---
-import { ArrowRight, Menu, X, ChevronDown } from '@lucide/astro';
+import { ArrowRight, Menu, X, ChevronDown, Moon, Sun } from '@lucide/astro';
 import { NAV_GROUPS } from '@/data/services.js';
 import Logo from './Logo.astro';
 ---
@@ -46,6 +46,10 @@ import Logo from './Logo.astro';
     <a href="/#contact" data-nav-close class="hidden lg:inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-5 py-2.5 text-sm font-semibold hover:brightness-95 active:scale-[0.98] transition">
       Get a Quote <ArrowRight class="w-4 h-4" />
     </a>
+    <button type="button" data-theme-toggle aria-label="Switch to dark mode" class="grid h-10 w-10 place-items-center rounded-full border border-border bg-card text-foreground shadow-sm hover:bg-secondary active:scale-[0.96] transition">
+      <Moon data-theme-icon-moon class="h-4 w-4 block dark:hidden" />
+      <Sun data-theme-icon-sun class="h-4 w-4 hidden dark:block" />
+    </button>
     <button data-menu-button class="lg:hidden p-2" aria-label="Menu" aria-expanded="false">
       <Menu data-menu-icon class="w-6 h-6" />
       <X data-close-icon class="w-6 h-6 hidden" />

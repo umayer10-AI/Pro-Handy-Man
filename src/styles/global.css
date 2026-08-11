@@ -22,6 +22,24 @@
     --ring: 199 89% 33%;
     --radius: 0.9rem;
   }
+
+  .dark {
+    --background: 200 30% 8%;
+    --foreground: 34 40% 96%;
+    --card: 200 26% 11%;
+    --card-foreground: 34 40% 96%;
+    --primary: 198 84% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 200 20% 16%;
+    --secondary-foreground: 34 40% 96%;
+    --muted: 200 18% 14%;
+    --muted-foreground: 34 14% 72%;
+    --accent: 28 96% 54%;
+    --accent-foreground: 0 0% 100%;
+    --border: 200 16% 22%;
+    --input: 200 16% 22%;
+    --ring: 198 84% 48%;
+  }
 }
 
 html {
@@ -34,6 +52,16 @@ body {
   background: hsl(var(--background));
   color: hsl(var(--foreground));
   text-rendering: optimizeLegibility;
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
 }
 
 img,
@@ -115,6 +143,13 @@ svg {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .theme-transition,
+  .theme-transition *,
+  .theme-transition *::before,
+  .theme-transition *::after {
     transition-duration: 0.001ms !important;
   }
 

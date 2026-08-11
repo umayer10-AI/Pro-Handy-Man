@@ -17,6 +17,38 @@ const reveal = () => {
   nodes.forEach((node) => observer.observe(node));
 };
 
+const theme = () => {
+  const button = document.querySelector('[data-theme-toggle]');
+  if (!button) return;
+
+  const sync = () => {
+    const isDark = document.documentElement.classList.contains('dark');
+    document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+    button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    button.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+  };
+
+  button.addEventListener('click', () => {
+    const nextTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+    document.documentElement.classList.add('theme-transition');
+    document.documentElement.classList.toggle('dark', nextTheme === 'dark');
+    document.documentElement.dataset.theme = nextTheme;
+
+    try {
+      localStorage.setItem('site-theme', nextTheme);
+    } catch {
+      // Ignore storage failures so the toggle still works for the current page.
+    }
+
+    sync();
+    window.setTimeout(() => {
+      document.documentElement.classList.remove('theme-transition');
+    }, 300);
+  });
+
+  sync();
+};
+
 const nav = () => {
   const header = document.querySelector('[data-site-header]');
   const menuButton = document.querySelector('[data-menu-button]');
@@ -223,6 +255,7 @@ const voiceGreeting = () => {
 const init = () => {
   if (document.documentElement.dataset.siteReady === 'true') return;
   document.documentElement.dataset.siteReady = 'true';
+  theme();
   reveal();
   nav();
   faq();
