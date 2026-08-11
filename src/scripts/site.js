@@ -71,6 +71,7 @@ const nav = () => {
     if (!servicesMenu || !servicesButton) return;
     servicesMenu.dataset.open = String(open);
     servicesButton.setAttribute('aria-expanded', String(open));
+    servicesButton.dataset.active = String(open);
     servicesChevron?.classList.toggle('rotate-180', open);
   };
 
@@ -138,14 +139,15 @@ const nav = () => {
       mobileMenu.querySelectorAll('[data-mobile-service]').forEach((item) => {
         item.dataset.open = 'false';
         item.querySelector('[data-mobile-service-toggle]')?.setAttribute('aria-expanded', 'false');
-        item.querySelector('[data-mobile-service-panel]')?.classList.add('hidden');
+        const itemPanel = item.querySelector('[data-mobile-service-panel]');
+        if (itemPanel) itemPanel.dataset.open = 'false';
         item.querySelector('[data-mobile-service-chevron]')?.classList.remove('rotate-180');
       });
 
       if (!isOpen && service && panel) {
         service.dataset.open = 'true';
         button.setAttribute('aria-expanded', 'true');
-        panel.classList.remove('hidden');
+        panel.dataset.open = 'true';
         chevron?.classList.add('rotate-180');
       }
     });
