@@ -56,10 +56,10 @@ const schemaFAQ = {
   canonical={`https://prohandymansg.com/services/${service.slug}`}
   schemas={[schemaService, schemaFAQ, reviewsSchema(ALL_TESTIMONIALS)]}
 >
-  <section class="relative pt-28 pb-16 overflow-hidden">
+  <section class="relative pt-28 pb-20 overflow-hidden">
     <div class="absolute inset-0 -z-10">
       <img src={service.img} alt={`Professional ${service.name.toLowerCase()} service for HDB flats and condos in Singapore — Pro Handyman SG.Com`} class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-gradient-to-r from-background via-background/92 to-background/50"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/60"></div>
     </div>
     <div class="mx-auto max-w-[72rem] px-5">
       <div class="flex flex-wrap items-center gap-2 text-sm font-medium text-muted-foreground">
@@ -72,7 +72,7 @@ const schemaFAQ = {
         )}
       </div>
       <div class="max-w-2xl mt-5 reveal-scale is-visible">
-        <span class="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-xs font-semibold text-primary">
+        <span class="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-secondary/85 px-4 py-1.5 text-xs font-bold text-primary shadow-sm">
           <Icon class="w-3.5 h-3.5" /> {service.name}
         </span>
         <h1 class="font-display font-extrabold tracking-tight text-4xl md:text-5xl leading-tight mt-5">{service.name} services in Singapore</h1>
@@ -84,7 +84,7 @@ const schemaFAQ = {
     </div>
   </section>
 
-  <section class="py-16">
+  <section class="py-20">
     <div class="mx-auto max-w-[56rem] px-5">
       <p class="text-lg leading-relaxed text-foreground/90 reveal">{service.intro}</p>
       <div class="mt-12 space-y-12">
@@ -104,7 +104,7 @@ const schemaFAQ = {
             {children.map((c) => {
               const ChildIcon = c.icon;
               return (
-                <a href={`/services/${c.slug}`} class="group flex items-start gap-3 rounded-xl border border-border bg-card p-4 hover:shadow-lg hover:-translate-y-0.5 transition">
+                <a href={`/services/${c.slug}`} class="group flex items-start gap-3 rounded-2xl border border-border/80 bg-card p-4 hover:shadow-lg hover:-translate-y-0.5 transition">
                   <span class="grid place-items-center w-9 h-9 rounded-lg bg-secondary text-primary shrink-0"><ChildIcon class="w-4 h-4" /></span>
                   <span>
                     <span class="block font-display font-semibold text-sm group-hover:text-primary transition">{c.name}</span>
@@ -117,7 +117,7 @@ const schemaFAQ = {
         </div>
       )}
 
-      <div class="mt-12 rounded-2xl bg-secondary/50 border border-border p-6 reveal-scale">
+      <div class="mt-12 rounded-[1.35rem] bg-secondary/50 border border-border/80 p-6 shadow-sm reveal-scale">
         <h2 class="font-display font-bold text-xl mb-4">Also useful</h2>
         <ul class="space-y-2 text-sm">
           {related.map((s) => (
@@ -129,7 +129,7 @@ const schemaFAQ = {
 
       <div class="mt-12 reveal">
         <h2 class="font-display font-bold text-2xl md:text-3xl">Frequently asked questions about {service.name.toLowerCase()} in Singapore</h2>
-        <div class="mt-6 divide-y divide-border rounded-2xl border border-border bg-card">
+        <div class="mt-6 divide-y divide-border rounded-[1.35rem] border border-border/80 bg-card shadow-sm">
           {service.faqs.map((f) => (
             <div class="p-6">
               <h3 class="font-semibold flex items-start gap-2"><CheckCircle2 class="w-5 h-5 text-accent shrink-0 mt-0.5" /> {f.q}</h3>
@@ -139,7 +139,7 @@ const schemaFAQ = {
         </div>
       </div>
 
-      <div class="mt-14 rounded-2xl bg-secondary/50 border border-border p-6 reveal-scale">
+      <div class="mt-14 rounded-[1.35rem] bg-secondary/50 border border-border/80 p-6 shadow-sm reveal-scale">
         <h2 class="font-display font-bold text-xl mb-4 flex items-center gap-2"><Award class="w-5 h-5 text-accent" /> Awards &amp; trust badges</h2>
         <div class="flex flex-wrap gap-3">
           {AWARDS.map((a) => (
@@ -150,7 +150,7 @@ const schemaFAQ = {
         </div>
       </div>
 
-      <div class="mt-16 rounded-3xl bg-primary text-primary-foreground p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 reveal-scale">
+      <div class="mt-16 rounded-[1.75rem] bg-primary text-primary-foreground p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-2xl reveal-scale">
         <div>
           <h2 class="font-display font-bold text-2xl">Need {service.name.toLowerCase()} help today?</h2>
           <p class="mt-2 text-primary-foreground/80">Upfront quotes, licensed handymen, islandwide across Singapore.</p>
@@ -172,7 +172,7 @@ const schemaFAQ = {
         {gridServices.map((s) => {
           const GridIcon = s.icon;
           return (
-            <a href={`/services/${s.slug}`} class="group flex items-center gap-3 rounded-xl border border-border bg-card p-4 hover:shadow-lg hover:-translate-y-0.5 transition">
+            <a href={`/services/${s.slug}`} class="group flex items-center gap-3 rounded-2xl border border-border/80 bg-card p-4 hover:shadow-lg hover:-translate-y-0.5 transition">
               <span class="grid place-items-center w-10 h-10 rounded-lg bg-secondary text-primary"><GridIcon class="w-5 h-5" /></span>
               <span class="font-display font-semibold group-hover:text-primary transition">{s.name}</span>
               <ArrowRight class="w-4 h-4 ml-auto text-muted-foreground group-hover:translate-x-1 transition" />

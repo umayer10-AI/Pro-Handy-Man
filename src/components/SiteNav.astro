@@ -4,19 +4,19 @@ import { NAV_GROUPS } from '@/data/services.js';
 import Logo from './Logo.astro';
 ---
 
-<header data-site-header class="fixed top-0 inset-x-0 z-50 bg-background/80 backdrop-blur border-b border-border transition-shadow">
-  <div class="mx-auto max-w-[72rem] px-5 h-16 flex items-center justify-between">
-    <a href="/" aria-label="Pro Handyman SG.Com home">
+<header data-site-header class="fixed top-0 inset-x-0 z-50 border-b border-border/70 bg-background/82 shadow-[0_1px_0_hsl(var(--foreground)/0.03)] backdrop-blur-xl transition-all duration-300">
+  <div class="mx-auto max-w-[72rem] px-4 sm:px-5 h-16 lg:h-[4.5rem] flex items-center justify-between gap-3">
+    <a href="/" aria-label="Pro Handyman SG.Com home" class="shrink-0 transition-transform duration-300 hover:scale-[1.02]">
       <Logo variant="solid" />
     </a>
-    <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
+    <nav class="hidden lg:flex items-center gap-1 rounded-full border border-border/75 bg-card/70 px-2 py-1.5 text-sm font-semibold shadow-sm backdrop-blur">
       <div class="static" data-services-menu-root>
-        <button type="button" data-services-menu-button aria-expanded="false" class="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
+        <button type="button" data-services-menu-button aria-expanded="false" class="flex items-center gap-1 rounded-full px-4 py-2 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">
           Services <ChevronDown data-services-menu-chevron class="w-4 h-4 transition-transform" />
         </button>
-        <div data-services-menu data-open="false" class="invisible pointer-events-none absolute left-0 right-0 top-full pt-3 opacity-0 translate-y-2 transition-all duration-200 ease-out data-[open=true]:visible data-[open=true]:pointer-events-auto data-[open=true]:opacity-100 data-[open=true]:translate-y-0">
+        <div data-services-menu data-open="false" class="invisible pointer-events-none absolute left-0 right-0 top-full pt-4 opacity-0 translate-y-2 transition-all duration-200 ease-out data-[open=true]:visible data-[open=true]:pointer-events-auto data-[open=true]:opacity-100 data-[open=true]:translate-y-0">
           <div class="mx-auto max-w-[72rem] px-5">
-            <div class="rounded-2xl border border-border bg-card shadow-2xl p-6 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-5 max-h-[70vh] overflow-auto">
+            <div class="rounded-[1.4rem] border border-border/80 bg-card/96 shadow-2xl p-6 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-5 max-h-[70vh] overflow-auto backdrop-blur">
               {NAV_GROUPS.map((g) => {
                 const Icon = g.icon;
                 return (
@@ -39,23 +39,25 @@ import Logo from './Logo.astro';
           </div>
         </div>
       </div>
-      <a href="/blog" data-nav-close class="text-muted-foreground hover:text-foreground transition-colors">Blog</a>
-      <a href="/#why" data-nav-close class="text-muted-foreground hover:text-foreground transition-colors">Why Us</a>
-      <a href="/#contact" data-nav-close class="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+      <a href="/blog" data-nav-close class="rounded-full px-4 py-2 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">Blog</a>
+      <a href="/#why" data-nav-close class="rounded-full px-4 py-2 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">Why Us</a>
+      <a href="/#contact" data-nav-close class="rounded-full px-4 py-2 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors">Contact</a>
     </nav>
-    <a href="/#contact" data-nav-close class="hidden lg:inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-5 py-2.5 text-sm font-semibold hover:brightness-95 active:scale-[0.98] transition">
-      Get a Quote <ArrowRight class="w-4 h-4" />
-    </a>
-    <button type="button" data-theme-toggle aria-label="Switch to dark mode" class="grid h-10 w-10 place-items-center rounded-full border border-border bg-card text-foreground shadow-sm hover:bg-secondary active:scale-[0.96] transition">
-      <Moon data-theme-icon-moon class="h-4 w-4 block dark:hidden" />
-      <Sun data-theme-icon-sun class="h-4 w-4 hidden dark:block" />
-    </button>
-    <button data-menu-button class="lg:hidden p-2" aria-label="Menu" aria-expanded="false">
-      <Menu data-menu-icon class="w-6 h-6" />
-      <X data-close-icon class="w-6 h-6 hidden" />
-    </button>
+    <div class="flex items-center gap-2">
+      <a href="/#contact" data-nav-close class="hidden lg:inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-5 py-2.5 text-sm font-bold hover:brightness-95 active:scale-[0.98] transition">
+        Get a Quote <ArrowRight class="w-4 h-4" />
+      </a>
+      <button type="button" data-theme-toggle aria-label="Switch to dark mode" class="grid h-10 w-10 place-items-center rounded-full border border-border/80 bg-card/80 text-foreground shadow-sm backdrop-blur hover:bg-secondary active:scale-[0.96] transition">
+        <Moon data-theme-icon-moon class="h-4 w-4 block dark:hidden" />
+        <Sun data-theme-icon-sun class="h-4 w-4 hidden dark:block" />
+      </button>
+      <button data-menu-button class="lg:hidden grid h-10 w-10 place-items-center rounded-full border border-border/80 bg-card/80 shadow-sm" aria-label="Menu" aria-expanded="false">
+        <Menu data-menu-icon class="w-5 h-5" />
+        <X data-close-icon class="w-5 h-5 hidden" />
+      </button>
+    </div>
   </div>
-  <div data-mobile-menu data-open="false" class="lg:hidden border-t border-border bg-background px-5 py-4 flex-col gap-1 max-h-[80vh] overflow-auto hidden data-[open=true]:flex data-[open=true]:animate-in data-[open=true]:fade-in data-[open=true]:slide-in-from-top-2">
+  <div data-mobile-menu data-open="false" class="lg:hidden border-t border-border/70 bg-background/96 px-5 py-5 flex-col gap-1 max-h-[82vh] overflow-auto hidden backdrop-blur-xl data-[open=true]:flex data-[open=true]:animate-in data-[open=true]:fade-in data-[open=true]:slide-in-from-top-2">
     <button type="button" data-mobile-services-button aria-expanded="false" class="flex w-full items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">
       Services <ChevronDown data-mobile-services-chevron class="w-4 h-4 transition-transform" />
     </button>
@@ -89,8 +91,8 @@ import Logo from './Logo.astro';
         );
       })}
     </div>
-    <a href="/blog" class="text-sm font-medium py-2 mt-1">Blog</a>
-    <a href="/#why" class="text-sm font-medium py-2">Why Us</a>
+    <a href="/blog" class="text-sm font-semibold py-2.5 mt-1">Blog</a>
+    <a href="/#why" class="text-sm font-semibold py-2.5">Why Us</a>
     <a href="/#contact" class="rounded-full bg-accent text-accent-foreground px-5 py-2.5 text-sm font-semibold text-center mt-2">Get a Quote</a>
   </div>
 </header>
