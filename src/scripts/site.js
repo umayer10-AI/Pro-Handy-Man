@@ -23,10 +23,52 @@ const nav = () => {
   const mobileMenu = document.querySelector('[data-mobile-menu]');
   const menuIcon = document.querySelector('[data-menu-icon]');
   const closeIcon = document.querySelector('[data-close-icon]');
+  const servicesRoot = document.querySelector('[data-services-menu-root]');
+  const servicesButton = document.querySelector('[data-services-menu-button]');
+  const servicesMenu = document.querySelector('[data-services-menu]');
+  const servicesChevron = document.querySelector('[data-services-menu-chevron]');
+  const mobileServicesButton = document.querySelector('[data-mobile-services-button]');
+  const mobileServicesList = document.querySelector('[data-mobile-services-list]');
+  const mobileServicesChevron = document.querySelector('[data-mobile-services-chevron]');
 
   const syncHeader = () => {
     header?.classList.toggle('shadow-sm', window.scrollY > 8);
   };
+
+  const setServicesOpen = (open) => {
+    if (!servicesMenu || !servicesButton) return;
+    servicesMenu.dataset.open = String(open);
+    servicesButton.setAttribute('aria-expanded', String(open));
+    servicesChevron?.classList.toggle('rotate-180', open);
+  };
+
+  const setMobileServicesOpen = (open) => {
+    if (!mobileServicesList || !mobileServicesButton) return;
+    mobileServicesList.dataset.open = String(open);
+    mobileServicesButton.setAttribute('aria-expanded', String(open));
+    mobileServicesChevron?.classList.toggle('rotate-180', open);
+  };
+
+  servicesButton?.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setServicesOpen(servicesMenu?.dataset.open !== 'true');
+  });
+
+  servicesMenu?.addEventListener('click', (event) => {
+    event.stopPropagation();
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!servicesRoot?.contains(event.target)) setServicesOpen(false);
+    if (!mobileServicesButton?.contains(event.target) && !mobileServicesList?.contains(event.target)) {
+      setMobileServicesOpen(false);
+    }
+  });
+
+  document.querySelectorAll('[data-nav-close]').forEach((link) => {
+    link.addEventListener('click', () => setServicesOpen(false));
+  });
 
   menuButton?.addEventListener('click', () => {
     const isOpen = mobileMenu?.dataset.open === 'true';
@@ -37,8 +79,15 @@ const nav = () => {
     document.documentElement.classList.toggle('overflow-hidden', !isOpen);
   });
 
+  mobileServicesButton?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isOpen = mobileServicesList?.dataset.open === 'true';
+    setMobileServicesOpen(!isOpen);
+  });
+
   mobileMenu?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
+      setMobileServicesOpen(false);
       mobileMenu.dataset.open = 'false';
       menuButton?.setAttribute('aria-expanded', 'false');
       menuIcon?.classList.remove('hidden');

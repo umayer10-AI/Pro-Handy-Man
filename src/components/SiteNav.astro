@@ -10,11 +10,11 @@ import Logo from './Logo.astro';
       <Logo variant="solid" />
     </a>
     <nav class="hidden lg:flex items-center gap-8 text-sm font-medium">
-      <div class="static group/nav">
-        <a href="/#services" class="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
-          Services <ChevronDown class="w-4 h-4 transition-transform group-hover/nav:rotate-180" />
-        </a>
-        <div class="hidden absolute left-0 right-0 top-full pt-3 group-hover/nav:block">
+      <div class="static" data-services-menu-root>
+        <button type="button" data-services-menu-button aria-expanded="false" class="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors">
+          Services <ChevronDown data-services-menu-chevron class="w-4 h-4 transition-transform" />
+        </button>
+        <div data-services-menu data-open="false" class="invisible pointer-events-none absolute left-0 right-0 top-full pt-3 opacity-0 translate-y-2 transition-all duration-200 ease-out data-[open=true]:visible data-[open=true]:pointer-events-auto data-[open=true]:opacity-100 data-[open=true]:translate-y-0">
           <div class="mx-auto max-w-[72rem] px-5">
             <div class="rounded-2xl border border-border bg-card shadow-2xl p-6 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-5 max-h-[70vh] overflow-auto">
               {NAV_GROUPS.map((g) => {
@@ -39,11 +39,11 @@ import Logo from './Logo.astro';
           </div>
         </div>
       </div>
-      <a href="/blog" class="text-muted-foreground hover:text-foreground transition-colors">Blog</a>
-      <a href="/#why" class="text-muted-foreground hover:text-foreground transition-colors">Why Us</a>
-      <a href="/#contact" class="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+      <a href="/blog" data-nav-close class="text-muted-foreground hover:text-foreground transition-colors">Blog</a>
+      <a href="/#why" data-nav-close class="text-muted-foreground hover:text-foreground transition-colors">Why Us</a>
+      <a href="/#contact" data-nav-close class="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
     </nav>
-    <a href="/#contact" class="hidden lg:inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-5 py-2.5 text-sm font-semibold hover:brightness-95 active:scale-[0.98] transition">
+    <a href="/#contact" data-nav-close class="hidden lg:inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-5 py-2.5 text-sm font-semibold hover:brightness-95 active:scale-[0.98] transition">
       Get a Quote <ArrowRight class="w-4 h-4" />
     </a>
     <button data-menu-button class="lg:hidden p-2" aria-label="Menu" aria-expanded="false">
@@ -52,29 +52,33 @@ import Logo from './Logo.astro';
     </button>
   </div>
   <div data-mobile-menu data-open="false" class="lg:hidden border-t border-border bg-background px-5 py-4 flex-col gap-1 max-h-[80vh] overflow-auto hidden data-[open=true]:flex data-[open=true]:animate-in data-[open=true]:fade-in data-[open=true]:slide-in-from-top-2">
-    <p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">Services</p>
-    {NAV_GROUPS.map((g) => {
-      const Icon = g.icon;
-      return (
-        <div class="border-b border-border/60 last:border-0" data-mobile-service={g.slug}>
-          <div class="flex items-center">
-            <a href={`/services/${g.slug}`} class="flex items-center gap-2 py-2.5 text-sm font-semibold flex-1">
-              <Icon class="w-4 h-4 text-primary" /> {g.name}
-            </a>
+    <button type="button" data-mobile-services-button aria-expanded="false" class="flex w-full items-center justify-between text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">
+      Services <ChevronDown data-mobile-services-chevron class="w-4 h-4 transition-transform" />
+    </button>
+    <div data-mobile-services-list data-open="false" class="max-h-0 overflow-hidden opacity-0 transition-all duration-200 ease-out data-[open=true]:max-h-[70vh] data-[open=true]:opacity-100">
+      {NAV_GROUPS.map((g) => {
+        const Icon = g.icon;
+        return (
+          <div class="border-b border-border/60 last:border-0" data-mobile-service={g.slug}>
+            <div class="flex items-center">
+              <a href={`/services/${g.slug}`} class="flex items-center gap-2 py-2.5 text-sm font-semibold flex-1">
+                <Icon class="w-4 h-4 text-primary" /> {g.name}
+              </a>
+              {g.subs.length > 0 && (
+                <button data-mobile-service-toggle class="p-2" aria-label={`Toggle ${g.name}`}>
+                  <ChevronDown class="w-4 h-4 transition-transform" data-mobile-service-chevron />
+                </button>
+              )}
+            </div>
             {g.subs.length > 0 && (
-              <button data-mobile-service-toggle class="p-2" aria-label={`Toggle ${g.name}`}>
-                <ChevronDown class="w-4 h-4 transition-transform" data-mobile-service-chevron />
-              </button>
+              <ul data-mobile-service-panel class="pl-6 pb-2 space-y-1 hidden">
+                {g.subs.map((s) => <li><a href={`/services/${s.slug}`} class="block text-xs text-muted-foreground py-1">{s.name}</a></li>)}
+              </ul>
             )}
           </div>
-          {g.subs.length > 0 && (
-            <ul data-mobile-service-panel class="pl-6 pb-2 space-y-1 hidden">
-              {g.subs.map((s) => <li><a href={`/services/${s.slug}`} class="block text-xs text-muted-foreground py-1">{s.name}</a></li>)}
-            </ul>
-          )}
-        </div>
-      );
-    })}
+        );
+      })}
+    </div>
     <a href="/blog" class="text-sm font-medium py-2 mt-1">Blog</a>
     <a href="/#why" class="text-sm font-medium py-2">Why Us</a>
     <a href="/#contact" class="rounded-full bg-accent text-accent-foreground px-5 py-2.5 text-sm font-semibold text-center mt-2">Get a Quote</a>
