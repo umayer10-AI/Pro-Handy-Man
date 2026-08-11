@@ -105,12 +105,14 @@ const nav = () => {
 
       mobileMenu.querySelectorAll('[data-mobile-service]').forEach((item) => {
         item.dataset.open = 'false';
+        item.querySelector('[data-mobile-service-toggle]')?.setAttribute('aria-expanded', 'false');
         item.querySelector('[data-mobile-service-panel]')?.classList.add('hidden');
         item.querySelector('[data-mobile-service-chevron]')?.classList.remove('rotate-180');
       });
 
       if (!isOpen && service && panel) {
         service.dataset.open = 'true';
+        button.setAttribute('aria-expanded', 'true');
         panel.classList.remove('hidden');
         chevron?.classList.add('rotate-180');
       }

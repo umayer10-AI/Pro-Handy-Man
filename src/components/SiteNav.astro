@@ -60,16 +60,22 @@ import Logo from './Logo.astro';
         const Icon = g.icon;
         return (
           <div class="border-b border-border/60 last:border-0" data-mobile-service={g.slug}>
-            <div class="flex items-center">
-              <a href={`/services/${g.slug}`} class="flex items-center gap-2 py-2.5 text-sm font-semibold flex-1">
-                <Icon class="w-4 h-4 text-primary" /> {g.name}
-              </a>
-              {g.subs.length > 0 && (
-                <button data-mobile-service-toggle class="p-2" aria-label={`Toggle ${g.name}`}>
+            {g.subs.length > 0 ? (
+              <button type="button" data-mobile-service-toggle aria-expanded="false" class="flex w-full items-center text-left">
+                <span class="flex items-center gap-2 py-2.5 text-sm font-semibold flex-1">
+                  <Icon class="w-4 h-4 text-primary" /> {g.name}
+                </span>
+                <span class="p-2" aria-hidden="true">
                   <ChevronDown class="w-4 h-4 transition-transform" data-mobile-service-chevron />
-                </button>
-              )}
-            </div>
+                </span>
+              </button>
+            ) : (
+              <div class="flex items-center">
+                <a href={`/services/${g.slug}`} class="flex items-center gap-2 py-2.5 text-sm font-semibold flex-1">
+                  <Icon class="w-4 h-4 text-primary" /> {g.name}
+                </a>
+              </div>
+            )}
             {g.subs.length > 0 && (
               <ul data-mobile-service-panel class="pl-6 pb-2 space-y-1 hidden">
                 {g.subs.map((s) => <li><a href={`/services/${s.slug}`} class="block text-xs text-muted-foreground py-1">{s.name}</a></li>)}
